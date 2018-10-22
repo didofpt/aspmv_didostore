@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidoStore", "Dido_Store_2\DidoStore.csproj", "{78578683-A3EB-41B2-8B6D-8F0B195036E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{EE0E32BA-D5AF-4030-AF07-F628E7630D70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78578683-A3EB-41B2-8B6D-8F0B195036E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78578683-A3EB-41B2-8B6D-8F0B195036E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78578683-A3EB-41B2-8B6D-8F0B195036E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78578683-A3EB-41B2-8B6D-8F0B195036E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF2C90E9-D0AF-4FAF-AB36-B8DD7E89759A}
+	EndGlobalSection
+EndGlobal
