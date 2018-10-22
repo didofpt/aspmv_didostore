@@ -31,7 +31,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         // POST
         [HttpPost]
         // GET: Admin/User/Create
-        []
+        
         public ActionResult Create(User user)
         {
             if(ModelState.IsValid)
