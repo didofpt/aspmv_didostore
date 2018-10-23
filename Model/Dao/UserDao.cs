@@ -34,7 +34,6 @@ namespace Model.Dao
 
         public User GetById(int id)
         {
-
             return dbContext.Users.Find(id);
         }
 

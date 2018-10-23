@@ -402,8 +402,12 @@ table.dataTable thead .sorting:after {
 .timeline-body > p + p {
   margin-top: 5px;
 }
+
+.page-wrapper.h1.page-header.my-header {
+    margin-top: 60px!important;
+}
 @media (max-width: 767px) {
-  ul.timeline:before {
+    ul .timeline:before {
     left: 40px;
   }
   ul.timeline > li > .timeline-panel {

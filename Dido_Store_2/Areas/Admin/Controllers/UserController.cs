@@ -7,7 +7,8 @@ namespace Dido_Store_2.Areas.Admin.Controllers
     public class UserController : Controller
     {
         // GET: Admin/User
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
+
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 2)
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);

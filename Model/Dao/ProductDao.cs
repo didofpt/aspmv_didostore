@@ -17,5 +17,10 @@ namespace Model.Dao
         }
 
 
+        public IEnumerable<Product> ListAll()
+        {
+            return dbContext.Products.Where(x => x.Status == true).ToList();
+        }
+
     }
 }

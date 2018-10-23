@@ -11,11 +11,14 @@ namespace Dido_Store_2.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Admin/Product
+        // GET: Admin/Product/Index
         public ActionResult Index()
         {
-            return View();
+            var dao = new ProductDao();
+            IEnumerable<Product> model = dao.ListAll();
+            return View(model);
         }
+
         [HttpGet]
         public ActionResult Create()
         {
