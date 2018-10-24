@@ -907,6 +907,7 @@
     <Content Include="Assets\admin\vendor\raphael\raphael.js" />
     <Content Include="Assets\admin\vendor\raphael\raphael.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -967,7 +968,6 @@
     <Content Include="Assets\admin\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Assets\admin\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Assets\admin\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
