@@ -1,6 +1,7 @@
 ﻿@model PagedList.IPagedList<Model.EF.Branch>
 @using PagedList.Mvc;
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -8,6 +9,10 @@
 
 @section header {
     Danh sách hãng
+}
+
+@section jsFooter{
+    <script src="~/Assets/admin/dist/js/controller/UserController.js"></script>
 }
 
 <div class="row">
@@ -18,6 +23,23 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+
+                <div class="row">
+                    @using(Html.BeginForm("Index", "Branch", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-6">
+                                <input type="text" name="searchString" placeholder="Nhập giá trị tìm kiếm" class="form-control" value="@ViewBag.searchString" />
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" name="name" class="btn btn-info btn-block btn-outline" value="Tìm kiếm" />
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <p></p>
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
@@ -26,6 +48,7 @@
                                 <th>Ngày tạo</th>
                                 <th>Tình trạng</th>
                                 <th>Thứ tự hiển thị</th>
+                                <th>Tình trạng</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -35,8 +58,9 @@
                                 <tr id="row_@item.ID">
                                     <td>@item.BranchName</td>
                                     <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToString("dd/MM/yyyy") : "" )</td>
-                                    <td>@item.Status</td>
+                                    <td>@(item.Status == true ? "Kích hoạt" : "Khóa")</td>
                                     <td>@item.DisplayOrder</td>
+                                    <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status == true ? "Kích họat" : "Khóa")</a></td>
                                     <td>
                                         <a href="/Admin/Branch/Edit/@item.ID">Sửa</a>&nbsp;/
                                         @*<a href="/Admin/User/Delete/@item.ID">Xóa</a>*@
@@ -51,13 +75,13 @@
                             }
                         </tbody>
                     </table>
-                   
-                    @Html.PagedListPager(Model, Page=> Url.Action("Index", new {Page }))
+
+                    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
 
                 </div>
             </div>
-                <!-- /.panel-body -->
-            </div>
+            <!-- /.panel-body -->
+        </div>
         <!-- /.panel -->
     </div>
     <!-- /.col-lg-6 -->

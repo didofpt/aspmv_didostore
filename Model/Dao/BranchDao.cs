@@ -55,9 +55,14 @@ namespace Model.Dao
             return dbContext.Branches.Where(x => x.Status == true).ToList();
         }
 
-        public IEnumerable<Branch> ListAllPaging(int page, int pageSize)
+        public IEnumerable<Branch> ListAllPaging(string searchString, int page, int pageSize)
         {
-            return dbContext.Branches.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pageSize);
+            IQueryable<Branch> model = dbContext.Branches;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.BranchName.Contains(searchString));
+            }
+            return model.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pageSize);
         }
 
         public bool Delete(int id)
@@ -73,6 +78,15 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+
+        public bool? ChangeStatus(int id)
+        {
+            var user = dbContext.Branches.Find(id);
+            
+            user.Status = !user.Status;
+            dbContext.SaveChanges();
+            return user.Status;
         }
 
     }

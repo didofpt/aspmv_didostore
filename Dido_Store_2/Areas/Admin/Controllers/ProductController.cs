@@ -32,6 +32,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             return View();
         }
 
+        [NonAction]
         public void SetViewBag(int? selectedId = null)
         {
             var dao = new BranchDao();

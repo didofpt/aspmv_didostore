@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using Dido_Store_2.Common;
+using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,18 @@ namespace Dido_Store_2.Areas.Admin.Controllers
     public class BranchController : Controller
     {
         // GET: Admin/Branch
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new BranchDao();
-            var model = dao.ListAllPaging(page, pageSize);
+            var model = dao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.searchString = searchString;
             return View(model);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            SetViewDataStatus();
             return View();
         }
 
@@ -29,12 +32,14 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         {
             var dao = new BranchDao();
             Branch model = dao.GetByID(id);
+            SetViewDataStatus(model.Status);
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Create(Branch branch)
         {
+            SetViewDataStatus();
             if(ModelState.IsValid)
             {
                 var dao = new BranchDao();
@@ -69,6 +74,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Cập nhật hãng thất bại");
                 }
             }
+            SetViewDataStatus(branch.Status);
             return View("Edit");
         }
 
@@ -83,9 +89,27 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Xóa hãng thất bại");
+                ModelState.AddModelError("", "Xóa hãng thất bại.");
             }
             return View("Index");
+        }
+
+        [NonAction]
+        public void SetViewDataStatus(bool? selected = null)
+        {
+            StatusObj active = new StatusObj { Key = CommonConstants.STATUS_ACTIVE, Value = true };
+            StatusObj deActive = new StatusObj { Key = CommonConstants.STATUS_DEACTIVE, Value = false };
+            ViewBag.Status = new SelectList(new List<StatusObj> { active, deActive }, "Value", "Key", selected);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var res = new BranchDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = res
+            });
         }
     }
 }

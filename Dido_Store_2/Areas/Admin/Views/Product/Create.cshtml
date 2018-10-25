@@ -1,18 +1,20 @@
 ﻿@model Model.EF.Product
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Create";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @section header{
     Thêm mới sản phẩm
-    }
+}
 
-@using (Html.BeginForm()) 
+@using(Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

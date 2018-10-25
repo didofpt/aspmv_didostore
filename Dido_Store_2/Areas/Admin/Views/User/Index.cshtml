@@ -44,6 +44,7 @@
                                 <th>SĐT</th>
                                 <th>Ngày tạo</th>
                                 <th>Email</th>
+                                <th>Tình trạng</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -57,6 +58,7 @@
                                 <td>@item.Phone</td>
                                 <td>@(item.CreatedDate != null ? @item.CreatedDate.Value.ToString("dd/MM/yyyy") : "")</td>
                                 <td>@item.Email</td>
+                                <td>@(item.Status==true?"Kích hoạt":"Khóa")</td>
                                 <td>
                                     <a href="/Admin/User/Edit/@item.ID">Sửa</a>&nbsp;/
                                     @*<a href="/Admin/User/Delete/@item.ID">Xóa</a>*@
