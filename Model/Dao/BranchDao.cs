@@ -83,7 +83,6 @@ namespace Model.Dao
         public bool? ChangeStatus(int id)
         {
             var user = dbContext.Branches.Find(id);
-            
             user.Status = !user.Status;
             dbContext.SaveChanges();
             return user.Status;

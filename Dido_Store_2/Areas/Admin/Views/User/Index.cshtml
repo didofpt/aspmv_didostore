@@ -21,14 +21,18 @@
                 <div class="row">
                     @using(Html.BeginForm("Index", "User", FormMethod.Get))
                     {
-                        <div class="form-group">
-                            <div class="col-md-4 col-md-offset-6">
-                                <input type="text" name="searchString" placeholder="Nhập giá trị tìm kiếm" class="form-control" value="@ViewBag.searchString" />
-                            </div>
-                            <div class="col-md-2">
-                                <input type="submit" name="name" class="btn btn-info btn-block btn-outline" value="Tìm kiếm" />
-                            </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                             <a href="/Admin/User/Create"  class="btn btn-primary btn-block btn-outline"  >Thêm mới</a>
                         </div>
+                        <div class="col-md-4 col-md-offset-4">
+                            <input type="text" name="searchString" placeholder="Nhập giá trị tìm kiếm" class="form-control" value="@ViewBag.searchString" />
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" name="name" class="btn btn-info btn-block btn-outline" value="Tìm kiếm" />
+                        </div>
+
+                    </div>
                     }
 
                 </div>

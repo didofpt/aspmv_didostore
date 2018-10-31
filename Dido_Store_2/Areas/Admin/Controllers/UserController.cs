@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: Admin/User
 
@@ -41,11 +41,12 @@ namespace Dido_Store_2.Areas.Admin.Controllers
                 var id = dao.Insert(user);
                 if(id > 0)
                 {
+                    SetAlert("Thêm người dùng thành công.", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm user thất bại");
+                    ModelState.AddModelError("", "Thêm người dùng thất bại");
                 }
             }
             return View("Create");
