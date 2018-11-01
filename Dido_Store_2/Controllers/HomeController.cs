@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,12 @@ namespace Dido_Store_2.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: Home
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            var productDao = new ProductDao();
+            ViewBag.NewProducts = productDao.ListNewProducts(4);
+            ViewBag.ListPromotionProducts = productDao.ListPromotionProducts(4);
             return View();
         }
     }

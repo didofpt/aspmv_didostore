@@ -1,10 +1,7 @@
 ﻿using Model.EF;
 using PagedList;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Dao
 {
@@ -80,12 +77,20 @@ namespace Model.Dao
             }
         }
 
+
         public bool? ChangeStatus(int id)
         {
             var user = dbContext.Branches.Find(id);
             user.Status = !user.Status;
             dbContext.SaveChanges();
             return user.Status;
+        }
+
+
+        //Method view detail branch
+        public Branch ViewDetail(long id)
+        {
+            return dbContext.Branches.Find(id);
         }
 
     }
