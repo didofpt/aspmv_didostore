@@ -60,6 +60,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
                 var res = dao.Update(user);
                 if(res)
                 {
+                    SetAlert("Chỉnh sửa người dùng thành công.", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
