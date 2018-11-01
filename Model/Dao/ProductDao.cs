@@ -1,9 +1,6 @@
 ﻿using Model.EF;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Dao
 {
@@ -22,7 +19,7 @@ namespace Model.Dao
             return dbContext.Products.Where(x => x.Status == true).ToList();
         }
 
-        //List product by date
+        //List top 4 newest product by date
         public List<Product> ListNewProducts(int top)
         {
             return dbContext.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
