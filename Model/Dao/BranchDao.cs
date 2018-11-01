@@ -75,5 +75,10 @@ namespace Model.Dao
             }
         }
 
+        //Method view detail branch
+        public Branch ViewDetail(long id)
+        {
+            return dbContext.Branches.Find(id);
+        }
     }
 }
