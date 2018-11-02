@@ -32,7 +32,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         {
             var dao = new BranchDao();
             Branch model = dao.GetByID(id);
-            SetViewDataStatus(model.Status);
+            SetViewDataStatus(false);
             return View(model);
         }
 

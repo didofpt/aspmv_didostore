@@ -12,7 +12,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         // GET: Admin/Product/Index
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 2)
         {
             var dao = new ProductDao();
             IEnumerable<Product> model = dao.ListAllPaging(searchString, page, pageSize);
@@ -62,7 +62,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         public void SetViewBag(int? selectedId = null)
         {
             var dao = new BranchDao();
-            ViewBag.BranchID = new SelectList(dao.ListAll(), "ID", "BranchName", selectedId);
+            ViewBag.BranchID = new SelectList(dao.ListAll(), "ID", "BranchName", selectedId as int?);
         }
 
         [HttpPost]

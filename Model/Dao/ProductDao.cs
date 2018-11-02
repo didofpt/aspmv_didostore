@@ -1,8 +1,6 @@
 ﻿using Model.EF;
 using PagedList;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace Model.Dao
@@ -74,7 +72,10 @@ namespace Model.Dao
         /// <returns></returns>
         public List<Product> ListPromotionProducts(int top)
         {
-            return dbContext.Products.Where(x => x.PromotionPrice != null).OrderByDescending(x => x.CreatedDate).Take(top).ToLis();
+            return dbContext.Products.Where(x => x.PromotionPrice != null)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(top)
+                .ToList();
         }
 
         //Get detail product
