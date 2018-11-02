@@ -57,6 +57,7 @@
         [StringLength(128)]
         [DisplayName("Tên đăng nhập")]
         [Required(ErrorMessage ="Bạn chưa nhập tên đăng nhập")]
+        [Index(IsUnique = true)]
         public string Username { get; set; }
 
         [StringLength(128)]

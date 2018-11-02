@@ -12,10 +12,11 @@ namespace Dido_Store_2.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         // GET: Admin/Product/Index
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new ProductDao();
-            IEnumerable<Product> model = dao.ListAll();
+            IEnumerable<Product> model = dao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.searchString = searchString;
             return View(model);
         }
 
@@ -28,9 +29,33 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product model)
+        public ActionResult Create(Product product)
         {
+            SetViewDataStatus();
+            SetViewBag(product.BranchID);
+            if(ModelState.IsValid)
+            {
+                product.CreatedDate = DateTime.Now;
+                int res = new ProductDao().Insert(product);
+                if(res > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Thêm mới không thành công");
+                }
+            }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model = new ProductDao().GetById(id);
+            SetViewDataStatus(model.Status);
+            SetViewBag(model.BranchID);
+            return View(model);
         }
 
         [NonAction]

@@ -27,6 +27,11 @@ namespace Model.Dao
 
         public int Insert(User entity)
         {
+            User user = GetByUserName(entity.Username);
+            if(user != null)
+            {
+                return -1;
+            }
             dbContext.Users.Add(entity);
             dbContext.SaveChanges();
             return entity.ID;
@@ -36,6 +41,8 @@ namespace Model.Dao
         {
             return dbContext.Users.Find(id);
         }
+
+      
 
         public bool Update(User entity)
         {
@@ -53,6 +60,7 @@ namespace Model.Dao
                 user.Phone = entity.Phone;
                 user.Gender = entity.Gender;
                 user.UpdatedDate = DateTime.Now;
+                user.Status = entity.Status;
                 dbContext.SaveChanges();
                 return true;
             }

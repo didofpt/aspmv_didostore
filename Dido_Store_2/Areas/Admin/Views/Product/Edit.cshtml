@@ -1,31 +1,13 @@
 ﻿@model Model.EF.Product
 
 @{
-    /**/
-
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@section jsFooter{
-    <script>
-        $(document).ready(function () {
-            $('#btnSelectImage').on('click', function (e) {
-                e.preventDefault();
-                var finder = new CKFinder();
-                finder.selectActionFunction = function (url) {
-                    $('#txtImage').val(url);
-                };
-                finder.popup();
-            });
-        });
-    </script>
-}
-
 @section header{
-    Thêm mới hãng
-}
-
+    Chỉnh sửa sản phẩm
+    }
 
 <div class="row">
     <div class="col-lg-12">
@@ -36,7 +18,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-8 col-md-offset-2">
-                        @using(Html.BeginForm("Create", "Product", FormMethod.Post))
+                        @using(Html.BeginForm("Edit", "Product", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
 

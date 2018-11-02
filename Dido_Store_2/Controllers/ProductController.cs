@@ -28,9 +28,9 @@ namespace Dido_Store_2.Controllers
             return View(branch);
         }
 
-        public ActionResult Detail(long productID)
+        public ActionResult Detail(int productID)
         {
-            var product = new ProductDao().GetProduct(productID);
+            var product = new ProductDao().GetById(productID);
             return View(product);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -21,10 +22,28 @@ namespace Model.Dao
             return dbContext.Products.Where(x => x.Status == true).ToList();
         }
 
+
+        public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<Product> model = dbContext.Products;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
         //List top 4 newest product by date
         public List<Product> ListNewProducts(int top)
         {
             return dbContext.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+        }
+
+        public int Insert(Product product)
+        {
+            dbContext.Products.Add(product);
+            dbContext.SaveChanges();
+            return product.ID;
         }
 
         //List discount product
@@ -34,7 +53,7 @@ namespace Model.Dao
         }
 
         //Get detail product
-        public Product GetProduct(long id)
+        public Product GetById(int id)
         {
             return dbContext.Products.Find(id);
         }

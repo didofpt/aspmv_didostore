@@ -1078,6 +1078,7 @@
     <Content Include="Assets\client\font\Amble-Regular-webfont.ttf" />
     <Content Include="Assets\client\images\Thumbs.db" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -8,7 +8,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
     {
         // GET: Admin/User
 
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 2)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);
@@ -19,12 +19,14 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            SetViewDataStatus();
             return View();
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            SetViewDataStatus();
             var model = new UserDao().GetById(id);
             return View(model);
         }
@@ -35,6 +37,8 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         
         public ActionResult Create(User user)
         {
+            SetViewDataStatus();
+
             if(ModelState.IsValid)
             {
                 var dao = new UserDao();
@@ -43,6 +47,10 @@ namespace Dido_Store_2.Areas.Admin.Controllers
                 {
                     SetAlert("Thêm người dùng thành công.", "success");
                     return RedirectToAction("Index", "User");
+                }
+                else if(id == -1)
+                {
+                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
                 }
                 else
                 {
@@ -54,6 +62,8 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(User user)
         {
+            SetViewDataStatus();
+
             if(ModelState.IsValid)
             {
                 var dao = new UserDao();
@@ -74,6 +84,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
+            var user = new UserDao().GetById(id);
             new UserDao().Delete(id);
             return RedirectToAction("Index");
         }
