@@ -77,15 +77,13 @@ namespace Model.Dao
             }
         }
 
-
         public bool? ChangeStatus(int id)
         {
-            var user = dbContext.Branches.Find(id);
-            user.Status = !user.Status;
+            var branch = dbContext.Branches.Find(id);
+            branch.Status = !branch.Status;
             dbContext.SaveChanges();
-            return user.Status;
+            return branch.Status;
         }
-
 
         //Method view detail branch
         public Branch ViewDetail(long id)

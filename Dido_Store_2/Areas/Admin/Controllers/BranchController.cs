@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
 {
-    public class BranchController : Controller
+    public class BranchController : BaseController
     {
         // GET: Admin/Branch
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
@@ -92,14 +92,6 @@ namespace Dido_Store_2.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Xóa hãng thất bại.");
             }
             return View("Index");
-        }
-
-        [NonAction]
-        public void SetViewDataStatus(bool? selected = null)
-        {
-            StatusObj active = new StatusObj { Key = CommonConstants.STATUS_ACTIVE, Value = true };
-            StatusObj deActive = new StatusObj { Key = CommonConstants.STATUS_DEACTIVE, Value = false };
-            ViewBag.Status = new SelectList(new List<StatusObj> { active, deActive }, "Value", "Key", selected);
         }
 
         [HttpPost]

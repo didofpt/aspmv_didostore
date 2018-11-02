@@ -1,5 +1,7 @@
 ﻿using Model.EF;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace Model.Dao
@@ -35,6 +37,14 @@ namespace Model.Dao
         public Product GetProduct(long id)
         {
             return dbContext.Products.Find(id);
+        }
+
+        public bool? ChangeStatus(int id)
+        {
+                var product = dbContext.Products.Find(id);
+                product.Status = !product.Status;
+                dbContext.SaveChanges();
+                return product.Status;
         }
 
     }

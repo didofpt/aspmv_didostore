@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         // GET: Admin/Product/Index
         public ActionResult Index()
@@ -23,6 +23,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         public ActionResult Create()
         {
             SetViewBag();
+            SetViewDataStatus();
             return View();
         }
 
@@ -37,6 +38,16 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         {
             var dao = new BranchDao();
             ViewBag.BranchID = new SelectList(dao.ListAll(), "ID", "BranchName", selectedId);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var res = new ProductDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = res
+            });
         }
 
     }
