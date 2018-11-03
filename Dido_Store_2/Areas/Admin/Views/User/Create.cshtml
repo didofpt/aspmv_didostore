@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 @Html.Label("Tình trạng", new { @class = "control-label col-md-4" })
                                 <div class="col-md-8">
-                                    @Html.DropDownList("Status", ViewBag.Status as SelectList, new { @class = " form-control" })
+                                    @Html.DropDownListFor(model => model.Status, ViewBag.Status as SelectList, new { @class = " form-control" })
                                     @Html.ValidationMessage("Status", "", new { @class = "text-danger" })
                                 </div>
                             </div>

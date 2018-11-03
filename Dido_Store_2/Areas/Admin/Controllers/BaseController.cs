@@ -40,7 +40,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         {
             StatusObj active = new StatusObj { Key = CommonConstants.STATUS_ACTIVE, Value = true };
             StatusObj deActive = new StatusObj { Key = CommonConstants.STATUS_DEACTIVE, Value = false };
-            ViewBag.Status = new SelectList(new List<StatusObj> { active, deActive }, "Value", "Key", selected as bool?);
+            ViewBag.Status = new SelectList(new List<StatusObj> { active, deActive }, "Value", "Key", selected);
         }
     }
 }

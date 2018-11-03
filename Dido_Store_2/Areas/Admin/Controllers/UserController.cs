@@ -26,8 +26,8 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            SetViewDataStatus();
             var model = new UserDao().GetById(id);
+            SetViewDataStatus(model.Status);
             return View(model);
         }
 

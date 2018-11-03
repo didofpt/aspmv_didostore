@@ -62,7 +62,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         public void SetViewBag(int? selectedId = null)
         {
             var dao = new BranchDao();
-            ViewBag.BranchID = new SelectList(dao.ListAll(), "ID", "BranchName", selectedId as int?);
+            ViewBag.BranchID = new SelectList(dao.ListAll(), "ID", "BranchName", selectedId);
         }
 
         [HttpPost]
