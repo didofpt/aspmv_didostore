@@ -1,5 +1,6 @@
 ﻿using Model.EF;
 using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,6 +48,7 @@ namespace Model.Dao
 
         public int Insert(Product product)
         {
+            product.CreatedDate = DateTime.Now;
             dbContext.Products.Add(product);
             dbContext.SaveChanges();
             return product.ID;
@@ -63,6 +65,34 @@ namespace Model.Dao
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
             var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex -1) * pageSize).Take(pageSize).ToList();
             return model;
+        }
+
+        public bool Update(Product product)
+        {
+            try
+            {
+                Product entity = dbContext.Products.Find(product.ID);
+                entity.Name = product.Name;
+                entity.Alias = product.Alias;
+                entity.BranchID = product.BranchID;
+                entity.Content = product.Content;
+                entity.Description = product.Description;
+                entity.Image = product.Image;
+                entity.UpdatedDate = DateTime.Now;
+                entity.MoreImages = product.MoreImages;
+                entity.Quantity = product.Quantity;
+                entity.Status = product.Status;
+                entity.Price = product.Price;
+                entity.PromotionPrice = product.PromotionPrice;
+                entity.Warranty = product.Warranty;
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
         /// <summary>

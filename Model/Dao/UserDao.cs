@@ -32,6 +32,7 @@ namespace Model.Dao
             {
                 return -1;
             }
+            entity.CreatedDate = DateTime.Now;
             dbContext.Users.Add(entity);
             dbContext.SaveChanges();
             return entity.ID;

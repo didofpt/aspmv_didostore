@@ -1,5 +1,6 @@
 ﻿using Model.EF;
 using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,7 @@ namespace Model.Dao
 
         public int Insert(Branch branch)
         {
+            branch.CreatedDate = DateTime.Now;
             dbContext.Branches.Add(branch);
             dbContext.SaveChanges();
             return branch.ID;
@@ -31,7 +33,7 @@ namespace Model.Dao
                 entity.Description = branch.Description;
                 entity.Image = branch.Image;
                 entity.Status = branch.Status;
-                entity.UpdatedDate = branch.UpdatedDate;
+                entity.UpdatedDate = DateTime.Now;
                 entity.DisplayOrder = branch.DisplayOrder;
                 dbContext.SaveChanges();
                 return true;

@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="desc span_3_of_2">
-                    <h2>@Model.Name</h2>
+                    <h2 class="font-weight-bold">@Model.Name</h2>
                     <p>@Model.Description</p>
                     <div class="price">
                         <p>Giá: <span>@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Liên hệ")<u>đ</u></span></p>
@@ -45,8 +45,8 @@
                         <div class="share">
                             <p>Chia sẻ :</p>
                             <ul>
-                                <li><a href="#"><img src="images/facebook.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/twitter.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/Assets/client/images/facebook.png" alt="" /></a></li>
+                                <li><a href="#"><img src="/Assets/client/images/twitter.png" alt="" /></a></li>
                             </ul>
                         </div>
                         <div class="button"><span><a href="#">Add to Cart</a></span></div>
@@ -72,7 +72,7 @@
                             @Html.Raw(Model.Content)
                         </div>
 
-                        <div class="product-tags">
+                        @* <div class="product-tags">
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <h4>Add Your Tags:</h4>
                             <div class="input-box">
@@ -84,9 +84,9 @@
                         <div class="review">
                             <h4>Lorem ipsum Review by <a href="#">Finibus Bonorum</a></h4>
                             <ul>
-                                <li>Price :<a href="#"><img src="images/price-rating.png" alt="" /></a></li>
-                                <li>Value :<a href="#"><img src="images/value-rating.png" alt="" /></a></li>
-                                <li>Quality :<a href="#"><img src="images/quality-rating.png" alt="" /></a></li>
+                                <li>Price :<a href="#"><img src="/Assets/client/images/price-rating.png" alt="" /></a></li>
+                                <li>Value :<a href="#"><img src="/Assets/client/images/value-rating.png" alt="" /></a></li>
+                                <li>Quality :<a href="#"><img src="/Assets/client/images/quality-rating.png" alt="" /></a></li>
                             </ul>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <div class="your-review">
@@ -110,7 +110,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

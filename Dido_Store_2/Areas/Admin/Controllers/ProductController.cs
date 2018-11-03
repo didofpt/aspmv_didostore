@@ -1,11 +1,8 @@
-﻿using Model.Dao;
+﻿using Dido_Store_2.Common;
+using Model.Dao;
 using Model.EF;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
 {
@@ -35,7 +32,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             SetViewBag(product.BranchID);
             if(ModelState.IsValid)
             {
-                product.CreatedDate = DateTime.Now;
+                product.Alias = ConvertNameToAlias.ConvertToUnsign(product.Name);
                 int res = new ProductDao().Insert(product);
                 if(res > 0)
                 {
@@ -56,6 +53,25 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             SetViewDataStatus(model.Status);
             SetViewBag(model.BranchID);
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if(ModelState.IsValid)
+            {
+                var dao = new ProductDao();
+                product.Alias = ConvertNameToAlias.ConvertToUnsign(product.Name);
+                var res = dao.Update(product);
+                if(res)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhận không thành công");
+                }
+            }
+            return View("Edit");
         }
 
         [NonAction]

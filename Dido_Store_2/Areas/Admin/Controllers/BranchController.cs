@@ -1,10 +1,5 @@
-﻿using Dido_Store_2.Common;
-using Model.Dao;
+﻿using Model.Dao;
 using Model.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
@@ -43,7 +38,6 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new BranchDao();
-                branch.CreatedDate = DateTime.Now;
                 int res = dao.Insert(branch);
                 if(res > 0)
                 {
@@ -63,7 +57,6 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new BranchDao();
-                branch.UpdatedDate = DateTime.Now;
                 var res = dao.Update(branch);
                 if(res)
                 {
