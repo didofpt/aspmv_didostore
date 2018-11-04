@@ -51,7 +51,7 @@ namespace Model.Dao
 
         public List<Branch> ListAll()
         {
-            return dbContext.Branches.Where(x => x.Status == true).ToList();
+            return dbContext.Branches.Where(x => x.Status == true).OrderBy(x=>x.DisplayOrder).ToList();
         }
 
         public IEnumerable<Branch> ListAllPaging(string searchString, int page, int pageSize)

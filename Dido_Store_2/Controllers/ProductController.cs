@@ -14,7 +14,7 @@ namespace Dido_Store_2.Controllers
         {
             return View();
         }
-        
+
         [ChildActionOnly]
         public PartialViewResult Branch()
         {
@@ -22,8 +22,9 @@ namespace Dido_Store_2.Controllers
             return PartialView(model);
         }
 
-        public ActionResult ProductBranch(long branchID, int page = 1, int pageSize = 1)
+        public ActionResult ProductBranch(long branchID, int page = 1)
         {
+            int pageSize = 2;
             var branch = new BranchDao().ViewDetail(branchID);
             ViewBag.Branch = branch;
             int totalRecord = 0;
@@ -39,7 +40,7 @@ namespace Dido_Store_2.Controllers
             ViewBag.TotalPage = totalPage;
             ViewBag.MaxPage = maxPage;
             ViewBag.First = 1;
-            ViewBag.Last = maxPage;
+            ViewBag.Last = totalPage;
             ViewBag.Next = page + 1;
             ViewBag.Prev = page - 1;
 

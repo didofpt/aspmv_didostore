@@ -32,10 +32,11 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             SetViewBag(product.BranchID);
             if(ModelState.IsValid)
             {
-                product.Alias = ConvertNameToAlias.ConvertToUnsign(product.Name);
+                product.Alias = ConvertNameToAlias.ConvertToAlias(product.Name);
                 int res = new ProductDao().Insert(product);
                 if(res > 0)
                 {
+                    SetAlert("Thêm mới sản phẩm thành công.", "success");
                     return RedirectToAction("Index");
                 }
                 else
@@ -60,10 +61,11 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new ProductDao();
-                product.Alias = ConvertNameToAlias.ConvertToUnsign(product.Name);
+                product.Alias = ConvertNameToAlias.ConvertToAlias(product.Name);
                 var res = dao.Update(product);
                 if(res)
                 {
+                    SetAlert("Cập nhật sản phẩm thành công.", "success");
                     return RedirectToAction("Index");
                 }
                 else

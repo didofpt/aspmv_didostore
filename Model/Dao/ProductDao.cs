@@ -60,7 +60,7 @@ namespace Model.Dao
         /// </summary>
         /// <param name="branchID"></param>
         /// <returns></returns>
-        public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 1)
         {
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
             var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex -1) * pageSize).Take(pageSize).ToList();

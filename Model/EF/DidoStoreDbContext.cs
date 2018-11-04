@@ -64,6 +64,10 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
+                .HasIndex(e => e.Username)
+                .IsUnique(true);
+
+            modelBuilder.Entity<User>()
                 .Property(e => e.Gender)
                 .IsUnicode(false);
 

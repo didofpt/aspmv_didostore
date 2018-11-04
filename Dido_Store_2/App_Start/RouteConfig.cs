@@ -20,6 +20,7 @@ namespace Dido_Store_2
                 namespaces: new[] { "Dido_Store_2.Controllers" }
             );
 
+
             routes.MapRoute(
                 name: "Product Detail",
                 url: "chi-tiet/{Alias}-{productID}",

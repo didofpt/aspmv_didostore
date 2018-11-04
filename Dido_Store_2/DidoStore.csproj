@@ -959,6 +959,7 @@
     <Content Include="Assets\client\images\slide-1-image.png" />
     <Content Include="Assets\client\images\slide-2-image.jpg" />
     <Content Include="Assets\client\images\slide-3-image.jpg" />
+    <Content Include="Assets\client\images\tab-icon.png" />
     <Content Include="Assets\client\images\tag.png" />
     <Content Include="Assets\client\images\thumbnailslide-1.jpg" />
     <Content Include="Assets\client\images\thumbnailslide-2.jpg" />
@@ -1116,6 +1117,7 @@
     <Content Include="Assets\client\scss\_screen-reader.scss" />
     <Content Include="Assets\client\scss\_stacked.scss" />
     <Content Include="Assets\client\scss\_variables.scss" />
+    <Content Include="Assets\client\font\Cabin-Regular.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

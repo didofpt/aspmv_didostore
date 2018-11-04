@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using Dido_Store_2.Common;
+using Model.Dao;
 using Model.EF;
 using System.Web.Mvc;
 
@@ -38,9 +39,12 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new BranchDao();
+                branch.Alias = ConvertNameToAlias.ConvertToAlias(branch.BranchName);
                 int res = dao.Insert(branch);
                 if(res > 0)
                 {
+
+                    SetAlert("Thêm mới hãng thành công.", "success");
                     return RedirectToAction("Index");
                 }
                 else
@@ -57,9 +61,11 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new BranchDao();
+                branch.Alias = ConvertNameToAlias.ConvertToAlias(branch.BranchName);
                 var res = dao.Update(branch);
                 if(res)
                 {
+                    SetAlert("Cập nhật hãng thành công.", "success");
                     return RedirectToAction("Index");
                 }
                 else

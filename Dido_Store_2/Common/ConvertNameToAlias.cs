@@ -27,7 +27,7 @@ namespace Dido_Store_2.Common
          };
 
 
-        public static string ConvertToUnsign(string str)
+        public static string ConvertToAlias(string str)
         {
             //Thay thế và lọc dấu từng char      
             for(int i = 1; i < VietNamChar.Length; i++)
