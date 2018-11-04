@@ -1,0 +1,8 @@
+﻿@model List<Model.EF.Branch>
+<ul>
+    <h3>Danh mục sản phẩm</h3>
+    @foreach (var item in Model)
+    {
+        <li><a href="/san-pham/@item.Alias-@item.ID">@item.BranchName</a></li>
+    }
+</ul>

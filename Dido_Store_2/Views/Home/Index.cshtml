@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listNewsProducts = (List<Model.EF.Product>)ViewBag.NewProducts;
+    var listPromotionProducts = (List<Model.EF.Product>)ViewBag.ListPromotionProducts;
+}
+
+@section slide{
+    <div class="header_slide">
+        <div class="header_bottom_left">
+            <div class="categories">
+                @{ Html.RenderAction("Branch", "Product");}
+            </div>
+        </div>
+        <div class="header_bottom_right">
+            <div class="slider">
+                <div id="slider">
+                    <div id="mover">
+                        <div id="slide-1" class="slide">
+                            <a href="preview.html"><img src="/Assets/client/images/slide-1-2018.png" alt="learn more" /></a>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <a href="preview.html"><img src="/Assets/client/images/slide-3-2018.png" alt="learn more" /></a>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <a href="preview.html"><img src="/Assets/client/images/slide-2-2018.png" alt="learn more" /></a>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}
+
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>New Products</h3>
+        </div>
+        <div class="see">
+            <p><a href="/san-pham">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group d-flex justify-content-center">
+        
+        @foreach (var item in listNewsProducts)
+        {
+            var url = "/chi-tiet/" + item.Alias + "-" + item.ID;
+            <div class="grid_1_of_4 images_1_of_4 col-3">
+                <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                <h2>@item.Name</h2>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")<u>đ</u></span></p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="@url">Add to Cart</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="content_bottom">
+        <div class="heading">
+            <h3>Discount Products</h3>
+        </div>
+        <div class="see">
+            <p><a href="/san-pham">See all Products</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var item in listPromotionProducts)
+        {
+            var url = "/chi-tiet/" + item.Alias + "-" + item.ID;
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
+                <h2>@item.Name</h2>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p>
+                            <span class="rupees">
+                                <strike>@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</strike><u>đ</u>
+                                @(item.PromotionPrice.Value.ToString("N0"))<u>đ</u>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4><a href="@url">Add to Cart</a></h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
