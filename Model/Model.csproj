@@ -69,11 +69,6 @@
     <Compile Include="EF\Rating.cs" />
     <Compile Include="EF\Role.cs" />
     <Compile Include="EF\User.cs" />
-    <Compile Include="Migrations\201811020334149_modify-Users.cs" />
-    <Compile Include="Migrations\201811020334149_modify-Users.Designer.cs">
-      <DependentUpon>201811020334149_modify-Users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +78,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811020334149_modify-Users.resx">
-      <DependentUpon>201811020334149_modify-Users.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

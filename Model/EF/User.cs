@@ -22,7 +22,7 @@
 
         [StringLength(128)]
         [DisplayName("Họ và tên")]
-        [Required(ErrorMessage ="Bạn chưa nhập họ tên")]
+        [Required(ErrorMessage = "Bạn chưa nhập họ tên")]
         public string Name { get; set; }
 
         [StringLength(128)]
@@ -34,7 +34,7 @@
 
         [StringLength(16)]
         [DisplayName("SĐT")]
-        [Required(ErrorMessage ="Bạn chưa nhập SĐT")]
+        [Required(ErrorMessage = "Bạn chưa nhập SĐT")]
         public string Phone { get; set; }
 
         [Column(TypeName = "date")]
@@ -56,13 +56,13 @@
 
         [StringLength(128)]
         [DisplayName("Tên đăng nhập")]
-        [Required(ErrorMessage ="Bạn chưa nhập tên đăng nhập")]
+        [Required(ErrorMessage = "Bạn chưa nhập tên đăng nhập")]
         [Index(IsUnique = true)]
         public string Username { get; set; }
 
         [StringLength(128)]
         [DisplayName("Mật khẩu")]
-        [Required(ErrorMessage ="Bạn chưa nhập mật khẩu")]
+        [Required(ErrorMessage = "Bạn chưa nhập mật khẩu")]
         public string Password { get; set; }
 
         [DisplayName("Chức vụ")]

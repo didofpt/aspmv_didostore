@@ -17,13 +17,23 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        public int UserID { get; set; }
+        public int? CustomerID { get; set; }
 
-        [StringLength(256)]
-        public string DestinateAdress { get; set; }
+        [StringLength(50)]
+        public string ShipName { get; set; }
+
+        [StringLength(20)]
+        public string ShipMobile { get; set; }
+
+        [StringLength(150)]
+        public string ShipAddress { get; set; }
+
+        [StringLength(50)]
+        public string ShipEmail { get; set; }
 
         public decimal? Total { get; set; }
 
+        [StringLength(200)]
         public string Note { get; set; }
 
         [StringLength(256)]

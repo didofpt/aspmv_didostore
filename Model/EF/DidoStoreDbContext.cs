@@ -42,6 +42,10 @@ namespace Model.EF
                 .HasForeignKey(e => e.ParentID);
 
             modelBuilder.Entity<Order>()
+                .Property(e => e.ShipMobile)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Order)
                 .WillCascadeOnDelete(false);
@@ -64,14 +68,6 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .HasIndex(e => e.Username)
-                .IsUnique(true);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Gender)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
@@ -81,8 +77,8 @@ namespace Model.EF
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Orders)
-                .WithRequired(e => e.User)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.User)
+                .HasForeignKey(e => e.CustomerID);
         }
     }
 }

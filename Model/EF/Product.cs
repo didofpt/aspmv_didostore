@@ -27,7 +27,7 @@
 
         [StringLength(128)]
         public string Alias { get; set; }
-        
+
         [DisplayName("Hãng")]
         public int? BranchID { get; set; }
 
@@ -75,7 +75,7 @@
         [DisplayName("Tình trạng")]
         public bool? Status { get; set; }
 
-        
+
         public int? ViewCount { get; set; }
 
         public virtual Branch Branch { get; set; }
