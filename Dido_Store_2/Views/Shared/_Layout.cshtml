@@ -27,12 +27,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
                 </div>
                 <div class="account_desc">
-                    <ul>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">My Account</a></li>
-                    </ul>
+                    @{ 
+                        var session = (Dido_Store_2.Common.UserLogin) Session[Dido_Store_2.Common.CommonConstants.USER_SESSION];
+                    }
+                    @if (Session[Dido_Store_2.Common.CommonConstants.USER_SESSION] == null)
+                    {
+                        <ul>
+                            <li><a href="dang-ky">Đăng ký</a></li>
+                            <li><a href="dang-nhap">Đăng nhập</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul>
+                            <li>Xin chào: @session.UserName</li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li>@Html.ActionLink("Thoát", "Logout", "User")</li>
+                        </ul>
+                    }
                 </div>
                 <div class="clear"></div>
             </div>
@@ -102,7 +115,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <div class="main">
             @RenderBody()
-            
+
         </div>
     </div>
     <div class="footer">
@@ -168,6 +181,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
     </script>
+    @RenderSection("jsFooter", required: false)
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
 </body>
 </html>

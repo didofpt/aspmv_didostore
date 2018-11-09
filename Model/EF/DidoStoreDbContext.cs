@@ -80,5 +80,6 @@ namespace Model.EF
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }
+
     }
 }
