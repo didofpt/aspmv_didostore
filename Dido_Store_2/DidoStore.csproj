@@ -976,6 +976,7 @@
     <Content Include="Assets\client\images\twitter.png" />
     <Content Include="Assets\client\images\value-rating.png" />
     <Content Include="Assets\client\images\wishlist.png" />
+    <Content Include="Assets\client\js\controller\baseController.js" />
     <Content Include="Assets\client\js\easing.js" />
     <Content Include="Assets\client\js\easyResponsiveTabs.js" />
     <Content Include="Assets\client\js\jquery-1.7.2.min.js" />

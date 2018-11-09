@@ -16,12 +16,11 @@ namespace Dido_Store_2.Models
         public string Username { get; set; }
 
         [Display(Name = "Mật khẩu")]
-        [StringLength(128, MinimumLength = 6, ErrorMessage ="Mật khẩu ít nhất 6 ký tự")]
         [Required(ErrorMessage = "Yêu cầu nhập mật khẩu")]
         public string Password { get; set; }
 
         [Display(Name = "Xác nhận mật khẩu")]
-        [Compare("Password", ErrorMessage = "Xác nhận mật khảu không đúng")]
+        [Compare("Password", ErrorMessage = "Xác nhận mật khẩu không đúng")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Họ tên")]
@@ -37,5 +36,11 @@ namespace Dido_Store_2.Models
 
         [Display(Name = "Điện thoại")]
         public string Phone { get; set; }
+
+        [Display(Name = "Ngày sinh")]
+        public DateTime BirthDay { get; set; }
+
+        [Display(Name = "Giới tính")]
+        public string Gender { get; set; }
     }
 }

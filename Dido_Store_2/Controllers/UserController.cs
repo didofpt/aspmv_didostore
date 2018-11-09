@@ -74,11 +74,14 @@ namespace Dido_Store_2.Controllers
                 else
                 {
                     var user = new User();
+                    user.Username = model.Username;
                     user.Name = model.Name;
                     user.Password = model.Password;
                     user.Phone = model.Phone;
                     user.Email = model.Email;
                     user.Address = model.Address;
+                    user.BirthDay = model.BirthDay;
+                    user.Gender = model.Gender;
                     user.CreatedDate = DateTime.Now;
                     user.Status = true;
                     var result = dao.Insert(user);
