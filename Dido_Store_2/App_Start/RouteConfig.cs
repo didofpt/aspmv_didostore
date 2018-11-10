@@ -13,6 +13,8 @@ namespace Dido_Store_2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("{*botdetect}",
+       new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
                 name: "Branch",
@@ -72,6 +74,36 @@ namespace Dido_Store_2
                 name: "About",
                 url: "gioi-thieu",
                 defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Contact",
+                url: "lien-he",
+                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+            namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Register",
+                url: "dang-ky",
+                defaults: new { controller = "User", action = "Register", id = UrlParameter.Optional },
+            namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+         
+
+            routes.MapRoute(
+                name: "Login",
+                url: "dang-nhap",
+                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional },
+                namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Search",
+                url: "tim-kiem",
+                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
                 namespaces: new[] { "Dido_Store_2.Controllers" }
             );
 

@@ -15,27 +15,11 @@ namespace Model.Dao
             dbContext = new DidoStoreDbContext();
         }
 
-        /// <summary>
-        /// List all product
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<Product> ListAll()
         {
             return dbContext.Products.Where(x => x.Status == true).ToList();
         }
 
-
-        public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
-        {
-            IQueryable<Product> model = dbContext.Products;
-            if(!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.Name.Contains(searchString));
-            }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
-        }
-
-        //List top 4 newest product by date
         /// <summary>
         /// List product by date
         /// </summary>
@@ -60,7 +44,8 @@ namespace Model.Dao
         /// </summary>
         /// <param name="branchID"></param>
         /// <returns></returns>
-        public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 1)
+ 
+        public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
             var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
@@ -100,6 +85,8 @@ namespace Model.Dao
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>
+=======
+>>>>>>> 22_10
         public List<Product> ListPromotionProducts(int top)
         {
             return dbContext.Products.Where(x => x.PromotionPrice != null)
@@ -108,7 +95,6 @@ namespace Model.Dao
                 .ToList();
         }
 
-        //Get detail product
 
         /// <summary>
         /// List relate product

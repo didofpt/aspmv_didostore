@@ -39,12 +39,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
                 </div>
                 <div class="account_desc">
-                    <ul>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">My Account</a></li>
-                    </ul>
+                    @{ 
+                        var session = (Dido_Store_2.Common.UserLogin) Session[Dido_Store_2.Common.CommonConstants.USER_SESSION];
+                    }
+                    @if (Session[Dido_Store_2.Common.CommonConstants.USER_SESSION] == null)
+                    {
+                        <ul>
+                            <li><a href="dang-ky">Đăng ký</a></li>
+                            <li><a href="dang-nhap">Đăng nhập</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul>
+                            <li>Xin chào: @session.UserName</li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li>@Html.ActionLink("Thoát", "Logout", "User")</li>
+                        </ul>
+                    }
                 </div>
                 <div class="clear"></div>
             </div>
@@ -99,8 +112,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </ul>
                 </div>
                 <div class="search_box">
-                    <form>
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    <form action="/tim-kiem" method="get">
+                        <input type="text" id="txtKeyword" name="keyword" placeholder="Gõ từ khóa"><input type="submit" value="">
                     </form>
                 </div>
                 <div class="clear"></div>
@@ -127,18 +140,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col_1_of_4 span_1_of_4">
                     <h4>Why buy from us</h4>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Customer Service</a></li>
+                        <li><a href="/gioi-thieu">About Us</a></li>
+                        <li><a href="/lien-he">Customer Service</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="contact.html">Site Map</a></li>
+                        <li><a href="/lien-he">Site Map</a></li>
                         <li><a href="#">Search Terms</a></li>
                     </ul>
                 </div>
                 <div class="col_1_of_4 span_1_of_4">
                     <h4>My account</h4>
                     <ul>
-                        <li><a href="contact.html">Sign In</a></li>
-                        <li><a href="index.html">View Cart</a></li>
+                        <li><a href="/dang-nhap">Sign In</a></li>
                         <li><a href="#">My Wishlist</a></li>
                         <li><a href="#">Track My Order</a></li>
                         <li><a href="contact.html">Help</a></li>
@@ -173,6 +185,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             $().UItoTop({ easingType: 'easeOutQuart' });
         });
     </script>
+    @RenderSection("jsFooter", required: false)
+    <script src="/Assets/client/js/controller/baseController.js"></script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
     @RenderSection("jsFooter", false)
 </body>

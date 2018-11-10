@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidoStore", "Dido_Store_2\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{EE0E32BA-D5AF-4030-AF07-F628E7630D70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{15FAA158-ADF0-49B4-8C65-F5454D151751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE0E32BA-D5AF-4030-AF07-F628E7630D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FAA158-ADF0-49B4-8C65-F5454D151751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FAA158-ADF0-49B4-8C65-F5454D151751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FAA158-ADF0-49B4-8C65-F5454D151751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FAA158-ADF0-49B4-8C65-F5454D151751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
