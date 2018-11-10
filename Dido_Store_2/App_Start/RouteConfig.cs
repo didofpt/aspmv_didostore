@@ -51,12 +51,7 @@ namespace Dido_Store_2
             namespaces: new[] { "Dido_Store_2.Controllers" }
             );
 
-            routes.MapRoute(
-                name: "Add Cart",
-                url: "them-gio-hang",
-                defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
-                namespaces: new[] { "Dido_Store_2.Controllers" }
-            );
+         
 
             routes.MapRoute(
                 name: "Login",

@@ -46,8 +46,7 @@ namespace Model.Dao
             return dbContext.Products.Where(x => x.ID != productID && x.BranchID == product.BranchID).ToList();
         }
 
-        public Product GetByID(long id)
-xx        {
+        public Product GetByID(long id){
             return dbContext.Products.Find(id);
         }
 
