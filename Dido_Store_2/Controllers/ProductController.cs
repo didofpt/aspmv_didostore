@@ -48,7 +48,7 @@ namespace Dido_Store_2.Controllers
 
         public ActionResult Detail(long productID)
         {
-            var product = new ProductDao().GetProduct(productID);
+            var product = new ProductDao().GetByID(productID);
             ViewBag.Branch = new BranchDao().ViewDetail(product.BranchID.Value);
             ViewBag.RelatedProduct = new ProductDao().ListRelatedProducts(productID);
             return View(product);
