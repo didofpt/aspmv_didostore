@@ -85,8 +85,6 @@ namespace Model.Dao
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>
-=======
->>>>>>> 22_10
         public List<Product> ListPromotionProducts(int top)
         {
             return dbContext.Products.Where(x => x.PromotionPrice != null)
@@ -107,12 +105,23 @@ namespace Model.Dao
             return dbContext.Products.Where(x => x.ID != productID && x.BranchID == product.BranchID).ToList();
         }
 
+        public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<Product> model = dbContext.Products;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
         /// <summary>
         /// Get detail product
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public Product GetById(int id)
+        //public Product GetById(int id)
         {
             return dbContext.Products.Find(id);
         }
