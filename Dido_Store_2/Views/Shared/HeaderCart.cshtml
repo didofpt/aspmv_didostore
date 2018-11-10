@@ -1,0 +1,13 @@
+﻿@model List<Dido_Store_2.Models.CartItem>
+
+
+<div class="cart">
+    <p>
+       <span><a href="/xem-gio-hang"><i class="fa  fa-shopping-cart">Giỏ hàng</i></a>:</span><div id="dd" class="wrapper-dropdown-2">
+            @Model.Count sản phẩm - @Model.Sum(x=>x.Product.Price*x.Quantity).Value.ToString("N0")<u>đ</u>
+            <ul class="dropdown">
+                <li><a href="/xem-gio-hang">you have no items in your Shopping cart</a></li>
+            </ul>
+        </div>
+    </p>
+</div>

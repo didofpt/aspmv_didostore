@@ -13,6 +13,7 @@ namespace Dido_Store_2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
                 name: "Branch",
                 url: "san-pham/{Alias}-{branchID}",
@@ -27,6 +28,45 @@ namespace Dido_Store_2
                 defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
                 namespaces: new[] { "Dido_Store_2.Controllers" }
             );
+
+
+            routes.MapRoute(
+                name: "Add Cart",
+                url: "them-gio-hang",
+                defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
+                namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+            routes.MapRoute(
+              name: "View Cart",
+              url: "xem-gio-hang",
+              defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
+              namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+
+            routes.MapRoute(
+                name: "Payment",
+                url: "thanh-toan",
+                defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional },
+                namespaces: new[] { "Dido_Store_2.Controllers" }
+            );
+
+            routes.MapRoute(
+               name: "Order success",
+               url: "hoan-thanh",
+               defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
+               namespaces: new[] { "Dido_Store_2.Controllers" }
+           );
+
+
+            routes.MapRoute(
+             name: "Register",
+             url: "dang-ky",
+             defaults: new { controller = "User", action = "Register", id = UrlParameter.Optional },
+             namespaces: new[] { "Dido_Store_2.Controllers" }
+         );
+
 
             routes.MapRoute(
                 name: "About",

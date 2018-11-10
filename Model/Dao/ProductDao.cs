@@ -63,7 +63,7 @@ namespace Model.Dao
         public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 1)
         {
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
-            var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex -1) * pageSize).Take(pageSize).ToList();
+            var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             return model;
         }
 
@@ -109,7 +109,7 @@ namespace Model.Dao
         }
 
         //Get detail product
-        
+
         /// <summary>
         /// List relate product
         /// </summary>
@@ -133,10 +133,10 @@ namespace Model.Dao
 
         public bool? ChangeStatus(int id)
         {
-                var product = dbContext.Products.Find(id);
-                product.Status = !product.Status;
-                dbContext.SaveChanges();
-                return product.Status;
+            var product = dbContext.Products.Find(id);
+            product.Status = !product.Status;
+            dbContext.SaveChanges();
+            return product.Status;
         }
 
     }

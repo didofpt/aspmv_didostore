@@ -12,5 +12,6 @@ namespace Dido_Store_2.Common
         public static readonly string STATUS_DEACTIVE = "Khóa";
         public static readonly string SEO_LINK_PRODUCT_DETAIL= "chi-tiet";
         public static readonly string SEO_LINK_BRANCH_DETAIL = "san-pham";
+        public static readonly string CART_SESSION = "CartSession";
     }
 }

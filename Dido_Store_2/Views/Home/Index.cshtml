@@ -52,7 +52,7 @@
         
         @foreach (var item in listNewsProducts)
         {
-            var url = "/chi-tiet/" + item.Alias + "-" + item.ID;
+            var url = "/chi-tiet/" + item.Alias + "-" + item.ID; 
             <div class="grid_1_of_4 images_1_of_4 col-3">
                 <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
                 <h2>@item.Name</h2>
@@ -61,7 +61,7 @@
                         <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")<u>đ</u></span></p>
                     </div>
                     <div class="add-cart">
-                        <h4><a href="@url">Add to Cart</a></h4>
+                        <h4><a href="/them-gio-hang?productID=@item.ID&quantity=1">Add to Cart</a></h4>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -94,7 +94,7 @@
                         </p>
                     </div>
                     <div class="add-cart">
-                        <h4><a href="@url">Add to Cart</a></h4>
+                        <h4><a href="/them-gio-hang?productID=@item.ID&quantity=1">Add to Cart</a></h4>
                     </div>
                     <div class="clear"></div>
                 </div>
