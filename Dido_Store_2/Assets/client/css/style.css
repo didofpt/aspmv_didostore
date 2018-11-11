@@ -191,10 +191,16 @@ body {
         display: inline-block;
     }
 
-        .cart p span {
+        .cart p span a {
             font-size: 1.5em;
             color: #E4292F;
+            cursor:pointer;
         }
+            .cart p span a:hover {
+                font-size: 1.5em;
+                color: #840004;
+                cursor: pointer;
+            }
 
 .wrapper-dropdown-2 {
     display: inline-block;
@@ -212,7 +218,7 @@ body {
         height: 0;
         position: absolute;
         right: 5px;
-        top: 50%;
+        top: 30%;
         margin-top: 0px;
         border-width: 6px 6px 0 6px;
         border-style: solid;
@@ -1282,6 +1288,10 @@ body {
     clear: both;
     padding: 0px;
     margin: 0px;
+}
+
+input.quantity.text-center.rounded {
+    border-radius: 4px;
 }
 
 .group:before,

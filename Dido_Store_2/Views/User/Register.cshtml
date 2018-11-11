@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model Dido_Store_2.Models.RegisterModel
 @using BotDetect.Web.Mvc;
 
@@ -7,10 +8,16 @@
 
 @{
     ViewBag.Title = "Đăng ký";
+=======
+﻿
+@{
+    ViewBag.Title = "Register";
+>>>>>>> 0bc525544065982ded84d265aa669143e56569eb
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="content">
+<<<<<<< HEAD
     @using (Html.BeginForm("Register", "User", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -116,3 +123,13 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+=======
+    <h2>Đăng ký thành viên</h2>
+    @using(Html.BeginForm("Register", "User", FormMethod.Post))
+    {
+
+    }
+
+</div>
+
+>>>>>>> 0bc525544065982ded84d265aa669143e56569eb

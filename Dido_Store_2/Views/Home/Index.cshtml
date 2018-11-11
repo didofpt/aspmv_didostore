@@ -52,7 +52,7 @@
         
         @foreach (var item in listNewsProducts)
         {
-            var url = "/chi-tiet/" + item.Alias + "-" + item.ID;
+            var url = "/chi-tiet/" + item.Alias + "-" + item.ID; 
             <div class="grid_1_of_4 images_1_of_4 col-3">
                 <a href="@url"><img src="@item.Image" alt="@item.Name" /></a>
                 <h2>@item.Name</h2>

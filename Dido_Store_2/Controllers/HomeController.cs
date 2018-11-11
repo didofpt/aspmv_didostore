@@ -1,8 +1,7 @@
-﻿using Model.Dao;
-using System;
+﻿using Dido_Store_2.Common;
+using Dido_Store_2.Models;
+using Model.Dao;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Dido_Store_2.Controllers
@@ -17,5 +16,19 @@ namespace Dido_Store_2.Controllers
             ViewBag.ListPromotionProducts = productDao.ListPromotionProducts(4);
             return View();
         }
+
+        [ChildActionOnly]
+        public PartialViewResult HeaderCart()
+        {
+            var cart = Session[CommonConstants.CART_SESSION];
+            List<CartItem> list = new List<CartItem>();
+            //Session.RemoveAll();
+            if(cart != null)
+            {
+                list = cart as List<CartItem>;
+            }
+            return PartialView(list);
+        }
+
     }
 }

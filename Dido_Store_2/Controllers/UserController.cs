@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 ﻿using BotDetect.Web.Mvc;
 using Dido_Store_2.Common;
 using Dido_Store_2.Models;
 using Model.Dao;
 using Model.EF;
 using System;
+=======
+﻿using System;
+>>>>>>> 0bc525544065982ded84d265aa669143e56569eb
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +23,7 @@ namespace Dido_Store_2.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
 
         public ActionResult Login()
         {
@@ -98,5 +103,7 @@ namespace Dido_Store_2.Controllers
             }
             return View(model);
         }
+=======
+>>>>>>> 0bc525544065982ded84d265aa669143e56569eb
     }
 }
