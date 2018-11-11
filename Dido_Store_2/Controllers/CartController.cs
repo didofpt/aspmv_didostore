@@ -157,9 +157,9 @@ namespace Dido_Store_2.Controllers
                     orderDetailDao.Insert(detail);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return Redirect("/xem-gio-hang");
+                throw e;
             }
             //Xóa session sau khi mua thành công
             Session[CommonConstants.CART_SESSION] = null;

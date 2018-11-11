@@ -930,6 +930,7 @@
     <Content Include="Assets\client\css\easy-responsive-tabs.css" />
     <Content Include="Assets\client\css\font-awesome.min.css" />
     <Content Include="Assets\client\css\global.css" />
+    <Content Include="Assets\client\css\jquery-ui.css" />
     <Content Include="Assets\client\css\slider.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\fonts\fontawesome-webfont.svg" />
@@ -989,7 +990,9 @@
     <Content Include="Assets\client\js\controller\baseController.js" />
     <Content Include="Assets\client\js\easing.js" />
     <Content Include="Assets\client\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\client\js\jquery-1.12.4.js" />
     <Content Include="Assets\client\js\jquery-1.7.2.min.js" />
+    <Content Include="Assets\client\js\jquery-ui.js" />
     <Content Include="Assets\client\js\jquery.accordion.js" />
     <Content Include="Assets\client\js\jquery.easing.js" />
     <Content Include="Assets\client\js\move-top.js" />
@@ -1190,6 +1193,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
