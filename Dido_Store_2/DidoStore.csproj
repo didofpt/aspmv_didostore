@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\BranchController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
@@ -203,6 +204,7 @@
     <Content Include="Assets\admin\dist\css\sb-admin-2.css" />
     <Content Include="Assets\admin\dist\css\sb-admin-2.min.css" />
     <Content Include="Assets\admin\dist\js\controller\branchController.js" />
+    <Content Include="Assets\admin\dist\js\controller\orderController.js" />
     <Content Include="Assets\admin\dist\js\controller\productController.js" />
     <Content Include="Assets\admin\dist\js\plugins\ckfinder\changelog.txt" />
     <Content Include="Assets\admin\dist\js\plugins\ckfinder\ckfinder.html" />
@@ -930,6 +932,7 @@
     <Content Include="Assets\client\css\easy-responsive-tabs.css" />
     <Content Include="Assets\client\css\font-awesome.min.css" />
     <Content Include="Assets\client\css\global.css" />
+    <Content Include="Assets\client\css\jquery-ui.css" />
     <Content Include="Assets\client\css\slider.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\fonts\fontawesome-webfont.svg" />
@@ -989,7 +992,9 @@
     <Content Include="Assets\client\js\controller\baseController.js" />
     <Content Include="Assets\client\js\easing.js" />
     <Content Include="Assets\client\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\client\js\jquery-1.12.4.js" />
     <Content Include="Assets\client\js\jquery-1.7.2.min.js" />
+    <Content Include="Assets\client\js\jquery-ui.js" />
     <Content Include="Assets\client\js\jquery.accordion.js" />
     <Content Include="Assets\client\js\jquery.easing.js" />
     <Content Include="Assets\client\js\move-top.js" />
@@ -1136,6 +1141,7 @@
     <Content Include="Assets\client\scss\_stacked.scss" />
     <Content Include="Assets\client\scss\_variables.scss" />
     <Content Include="Assets\client\font\Cabin-Regular.ttf" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1189,8 +1195,8 @@
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,6 +38,7 @@ namespace Dido_Store_2.Models
         public string Phone { get; set; }
 
         [Display(Name = "Ngày sinh")]
+        [Required(ErrorMessage = "Yêu cầu nhập Ngày sinh")]
         public DateTime BirthDay { get; set; }
 
         [Display(Name = "Giới tính")]

@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,10 @@ namespace Model.Dao
             return dbContext.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
         }
 
+        public List<String> ListName(string keyword)
+        {
+            return dbContext.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();        }
+
         public int Insert(Product product)
         {
             product.CreatedDate = DateTime.Now;
@@ -50,6 +55,38 @@ namespace Model.Dao
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
             var model = dbContext.Products.Where(x => x.BranchID == branchID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             return model;
+        }
+
+        public List<ProductViewModel> Search(string keyword, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        {
+            totalRecord = dbContext.Products.Where(x => x.Name == keyword).Count();
+            var model = (from a in dbContext.Products
+                         join b in dbContext.Branches
+                         on a.BranchID equals b.ID
+                         where a.Name.Contains(keyword)
+                         select new
+                         {
+                             BranchMetaTitle = b.Alias,
+                             BranchName = b.BranchName,
+                             CreatedDate = a.CreatedDate,
+                             ID = a.ID,
+                             Images = a.Image,
+                             Name = a.Name,
+                             MetaTitle = a.Alias,
+                             Price = a.Price
+                         }).AsEnumerable().Select(x => new ProductViewModel()
+                         {
+                             CateMetaTitle = x.MetaTitle,
+                             CateName = x.Name,
+                             CreatedDate = x.CreatedDate,
+                             ID = x.ID,
+                             Images = x.Images,
+                             Name = x.Name,
+                             MetaTitle = x.MetaTitle,
+                             Price = x.Price
+                         });
+            model.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
         }
 
         public bool Update(Product product)

@@ -72,7 +72,6 @@
 
                         </tbody>
                     </table>
-
                     @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @searchString = ViewBag.searchString }))
                 </div>
 

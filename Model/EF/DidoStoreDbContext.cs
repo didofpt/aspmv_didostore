@@ -81,5 +81,6 @@ namespace Model.EF
                 .HasForeignKey(e => e.CustomerID);
         }
 
+        public System.Data.Entity.DbSet<Model.ViewModel.ProductViewModel> ProductViewModels { get; set; }
     }
 }

@@ -84,7 +84,6 @@ namespace Dido_Store_2
             namespaces: new[] { "Dido_Store_2.Controllers" }
             );
 
-
             routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",
