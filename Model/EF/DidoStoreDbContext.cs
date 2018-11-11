@@ -80,5 +80,6 @@ namespace Model.EF
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.CustomerID);
         }
+
     }
 }

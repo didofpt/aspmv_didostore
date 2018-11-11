@@ -15,15 +15,10 @@ namespace Model.Dao
             dbContext = new DidoStoreDbContext();
         }
 
-        /// <summary>
-        /// List all product
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<Product> ListAll()
         {
             return dbContext.Products.Where(x => x.Status == true).ToList();
         }
-
 
         public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
         {
@@ -35,12 +30,6 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
-        //List top 4 newest product by date
-        /// <summary>
-        /// List product by date
-        /// </summary>
-        /// <param name="top"></param>
-        /// <returns></returns>
         public List<Product> ListNewProducts(int top)
         {
             return dbContext.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
@@ -54,12 +43,6 @@ namespace Model.Dao
             return product.ID;
         }
 
-        //List discount product
-        /// <summary>
-        /// List product by branch
-        /// </summary>
-        /// <param name="branchID"></param>
-        /// <returns></returns>
         public List<Product> ListByBranch(long branchID, ref int totalRecord, int pageIndex = 1, int pageSize = 1)
         {
             totalRecord = dbContext.Products.Where(x => x.BranchID == branchID).Count();
@@ -95,11 +78,6 @@ namespace Model.Dao
 
         }
 
-        /// <summary>
-        /// List discount product
-        /// </summary>
-        /// <param name="top"></param>
-        /// <returns></returns>
         public List<Product> ListPromotionProducts(int top)
         {
             return dbContext.Products.Where(x => x.PromotionPrice != null)
@@ -108,25 +86,14 @@ namespace Model.Dao
                 .ToList();
         }
 
-        //Get detail product
-        
-        /// <summary>
-        /// List relate product
-        /// </summary>
-        /// <param name="productID"></param>
-        /// <returns></returns>
         public List<Product> ListRelatedProducts(long productID)
         {
             var product = dbContext.Products.Find(productID);
             return dbContext.Products.Where(x => x.ID != productID && x.BranchID == product.BranchID).ToList();
         }
 
-        /// <summary>
-        /// Get detail product
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Product GetById(int id)
+
+        public Product GetByID(long id)
         {
             return dbContext.Products.Find(id);
         }

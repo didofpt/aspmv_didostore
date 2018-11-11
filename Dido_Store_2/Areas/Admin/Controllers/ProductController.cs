@@ -50,7 +50,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var model = new ProductDao().GetById(id);
+            var model = new ProductDao().GetByID(id);
             SetViewDataStatus(model.Status);
             SetViewBag(model.BranchID);
             return View(model);

@@ -2,6 +2,7 @@
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace Model.Dao
@@ -18,7 +19,7 @@ namespace Model.Dao
         public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<User> model = dbContext.Users;
-            if(!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.Username.Contains(searchString) || x.Name.Contains(searchString));
             }
@@ -51,7 +52,7 @@ namespace Model.Dao
             {
                 var user = dbContext.Users.Find(entity.ID);
                 user.Name = entity.Name;
-                if(!string.IsNullOrEmpty(entity.Password))
+                if (!string.IsNullOrEmpty(entity.Password))
                 {
                     user.Password = entity.Password;
                 }
@@ -96,6 +97,15 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+
+        public bool CheckUserName(string username)
+        {
+            return dbContext.Users.Count(x => x.Username == username) > 0;
+        }
+        public bool CheckEmail(string email)
+        {
+            return dbContext.Users.Count(x => x.Email == email) > 0;
         }
 
     }
