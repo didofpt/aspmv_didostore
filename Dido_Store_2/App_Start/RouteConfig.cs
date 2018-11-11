@@ -84,14 +84,6 @@ namespace Dido_Store_2
             namespaces: new[] { "Dido_Store_2.Controllers" }
             );
 
-            routes.MapRoute(
-                name: "Register",
-                url: "dang-ky",
-                defaults: new { controller = "User", action = "Register", id = UrlParameter.Optional },
-            namespaces: new[] { "Dido_Store_2.Controllers" }
-            );
-
-         
 
             routes.MapRoute(
                 name: "Login",
