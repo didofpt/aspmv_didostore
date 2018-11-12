@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Dido_Store_2.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         // GET: Admin/Order/Index
         public ActionResult Index(string searchString, int page = 1, int pageSize = 2)
@@ -29,25 +29,25 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             });
         }
 
-        [HttpPost]
-        public ActionResult Detail(Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new OrderDao();
-                var res = dao.Update(product);
-                if (res)
-                {
-                    SetAlert("Cập nhật sản phẩm thành công.", "success");
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhận không thành công");
-                }
-            }
-            return View("Edit");
-        }
+        //[HttpPost]
+        //public ActionResult Detail(Order order)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var dao = new OrderDao();
+        //        var res = dao.Update(product);
+        //        if (res)
+        //        {
+        //            SetAlert("Cập nhật sản phẩm thành công.", "success");
+        //            return RedirectToAction("Index");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Cập nhận không thành công");
+        //        }
+        //    }
+        //    return View("Edit");
+        //}
 
         [NonAction]
         public void SetViewBag(int? selectedId = null)
