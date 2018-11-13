@@ -32,7 +32,7 @@ namespace Model.Dao
         public IEnumerable<Order> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<Order> model = dbContext.Orders;
-            if (!string.IsNullOrEmpty(searchString))
+            if(!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.ShipName.Contains(searchString));
             }
@@ -46,6 +46,32 @@ namespace Model.Dao
             dbContext.SaveChanges();
             return order.Status;
         }
+<<<<<<< HEAD
         
+=======
+
+        //public OrderDetailViewModel ViewDetail(long id)
+        //{
+        //    var model = (from a in dbContext.OrderDetails
+        //                 join b in dbContext.Products
+        //                 on a.ProductID equals b.ID
+        //                 where a.OrderID == id
+        //                 select new
+        //                 {
+        //                     id = b.ID,
+        //                     productName = b.Name,
+        //                     quantity = a.Quantity,
+        //                     price = b.Price,
+        //                 }).AsEnumerable().Select(x => new OrderDetailViewModel()
+        //                 {
+        //                     id = x.id,
+        //                     productName = x.productName,
+        //                     quantity = x.quantity,
+        //                     price = x.price,
+        //                     total = x.quantity * x.price
+        //                 });
+        //    return (OrderDetailViewModel)model;
+        //}
+>>>>>>> c4bce401d55934c5b72987eb114911e2cb7f8e90
     }
 }

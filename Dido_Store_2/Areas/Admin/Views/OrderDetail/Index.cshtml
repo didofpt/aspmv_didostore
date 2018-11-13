@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<Model.EF.OrderDetail>
+@using PagedList.Mvc;
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    Chi tiết đơn hàng
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Chi tiết đơn hàng
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <p></p>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng/th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach(var item in Model)
+                            {
+                                <tr id="">
+                                    <td>@item.Product.Name</td>
+                                    <td>@item.Product.Price.Value.ToString("N0")<u>đ</u></td>
+                                    <td>@item.Quantity</td>
+                                    <td>@(item.Product.Price.HasValue ? (item.Product.Price * item.Quantity).Value.ToString("N0") : "")<u>đ</u></td>
+                                </tr>
+                            }
+
+                        <td></td>
+                        <td></td>
+                        <td>Tổng</td>
+                        <td class="text-danger">@((ViewBag.total).ToString("N0"))<u>đ</u></td>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index", "Order")
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+

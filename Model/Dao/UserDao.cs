@@ -44,8 +44,6 @@ namespace Model.Dao
             return dbContext.Users.Find(id);
         }
 
-      
-
         public bool Update(User entity)
         {
             try
