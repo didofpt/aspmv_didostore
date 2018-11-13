@@ -29,8 +29,6 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             });
         }
 
-<<<<<<< HEAD
-=======
         //[HttpPost]
         //public ActionResult Detail(Order order)
         //{
@@ -50,7 +48,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
         //    }
         //    return View("Edit");
         //}
->>>>>>> c4bce401d55934c5b72987eb114911e2cb7f8e90
+
 
         [NonAction]
         public void SetViewBag(int? selectedId = null)

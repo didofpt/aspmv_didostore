@@ -46,9 +46,6 @@ namespace Model.Dao
             dbContext.SaveChanges();
             return order.Status;
         }
-<<<<<<< HEAD
-        
-=======
 
         //public OrderDetailViewModel ViewDetail(long id)
         //{
@@ -72,6 +69,5 @@ namespace Model.Dao
         //                 });
         //    return (OrderDetailViewModel)model;
         //}
->>>>>>> c4bce401d55934c5b72987eb114911e2cb7f8e90
     }
 }

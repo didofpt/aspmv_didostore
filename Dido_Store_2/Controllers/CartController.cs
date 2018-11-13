@@ -1,9 +1,11 @@
-﻿using Dido_Store_2.Common;
+﻿using Common;
+using Dido_Store_2.Common;
 using Dido_Store_2.Models;
 using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -143,6 +145,7 @@ namespace Dido_Store_2.Controllers
             order.ShipEmail = shipEmail;
             order.ShipMobile = shipMobile;
             order.ShipName = shipName;
+            decimal total = 0;
             try
             {
                 var id = new OrderDao().Insert(order);
@@ -155,7 +158,20 @@ namespace Dido_Store_2.Controllers
                     detail.ProductID = item.Product.ID;
                     detail.Quantity = item.Quantity;
                     orderDetailDao.Insert(detail);
+
+                    total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                 }
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
+
+                content = content.Replace("{{CustomerName}}", shipName);
+                content = content.Replace("{{Phone}}", shipMobile);
+                content = content.Replace("{{Email}}", shipEmail);
+                content = content.Replace("{{Address}}", shipAddress);
+                content = content.Replace("{{Total}}", total.ToString("N0"));
+                var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+
+                new MailHelper().SendMail(shipEmail, "Đơn hàng mới từ DidoStore", content);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ DidoStore", content);
             }
             catch (Exception e)
             {
