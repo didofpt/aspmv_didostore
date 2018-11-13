@@ -29,25 +29,6 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             });
         }
 
-        [HttpPost]
-        public ActionResult Detail(Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new OrderDao();
-                var res = dao.Update(product);
-                if (res)
-                {
-                    SetAlert("Cập nhật sản phẩm thành công.", "success");
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhận không thành công");
-                }
-            }
-            return View("Edit");
-        }
 
         [NonAction]
         public void SetViewBag(int? selectedId = null)
