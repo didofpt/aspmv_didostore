@@ -1,7 +1,8 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -20,20 +21,33 @@ namespace Model.EF
         public int? CustomerID { get; set; }
 
         [StringLength(50)]
+        [DisplayName("Tên")]
+        [Required(ErrorMessage = "Vui lòng nhập tên")]
         public string ShipName { get; set; }
 
-        [StringLength(20)]
+        [StringLength(10)]
+        [MinLength(10, ErrorMessage = "Vui lòng nhập SĐT đúng")]
+        [Phone(ErrorMessage = "Vui lòng nhập SĐT đúng")]
+        [DisplayName("SĐT")]
+        [Required(ErrorMessage = "Vui lòng nhập SĐT")]
         public string ShipMobile { get; set; }
 
         [StringLength(150)]
+        [MinLength(10, ErrorMessage = "Địa chỉ quá ngắn")]
+        [DisplayName("Địa chỉ")]
+        [Required(ErrorMessage = "Vui lòng nhập địa chỉ")]
         public string ShipAddress { get; set; }
 
         [StringLength(50)]
+        [DisplayName("Email")]
+        [Required(ErrorMessage = "Vui lòng nhập email")]
+        [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng email")]
         public string ShipEmail { get; set; }
 
         public decimal? Total { get; set; }
 
         [StringLength(200)]
+        [DisplayName("Ghi chú")]
         public string Note { get; set; }
 
         [StringLength(256)]

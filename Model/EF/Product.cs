@@ -62,6 +62,7 @@
         public string UpdatedBy { get; set; }
 
         [DisplayName("Bảo hành (tháng)")]
+        
         public int? Warranty { get; set; }
 
         [DisplayName("Nội dung")]

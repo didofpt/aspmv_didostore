@@ -14,7 +14,7 @@ namespace Dido_Store_2
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.IgnoreRoute("{*botdetect}",
-       new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
+                new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
                 name: "Branch",

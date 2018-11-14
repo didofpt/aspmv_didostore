@@ -74,7 +74,8 @@ namespace Dido_Store_2.Controllers
         public JsonResult DeleteAll()
         {
             Session[CommonConstants.CART_SESSION] = null;
-            return Json(new {
+            return Json(new
+            {
                 status = true
             });
         }
@@ -89,18 +90,28 @@ namespace Dido_Store_2.Controllers
                 var jsonItem = jsonCarts.SingleOrDefault(e => e.Product.ID == item.Product.ID);
                 if(jsonItem != null)
                 {
-                    item.Quantity = jsonItem.Quantity;
+                    int availableQuantity = new ProductDao().GetQuantity(jsonItem.Product.ID);
+
+                    if(availableQuantity < jsonItem.Quantity)
+                    {
+                        item.Quantity = availableQuantity;
+                    }
+                    else
+                    {
+                        item.Quantity = jsonItem.Quantity;
+                    }
                 }
             }
             Session[CommonConstants.CART_SESSION] = sessionCarts;
-            return Json(new {
+            return Json(new
+            {
                 status = true
             });
         }
 
         public JsonResult Delete(int id)
         {
-            var sessionCarts = (List<CartItem>) Session[CommonConstants.CART_SESSION];
+            var sessionCarts = (List<CartItem>)Session[CommonConstants.CART_SESSION];
             sessionCarts.RemoveAll(e => e.Product.ID == id);
             Session[CommonConstants.CART_SESSION] = sessionCarts;
             if(sessionCarts.Count == 0)
@@ -111,9 +122,10 @@ namespace Dido_Store_2.Controllers
                     empty = true
                 });
             }
-            return Json(new {
+            return Json(new
+            {
                 status = true,
-                 empty = false
+                empty = false
             });
         }
 
@@ -126,7 +138,8 @@ namespace Dido_Store_2.Controllers
             if(cart != null)
             {
                 list = cart as List<CartItem>;
-                return View(list);
+                ViewBag.cartList = list;
+                return View();
             }
             else
             {
@@ -135,35 +148,45 @@ namespace Dido_Store_2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Payment(string shipName, string shipMobile, string shipEmail, string shipAddress)
+        public ActionResult Payment(Order model)
         {
-            var order = new Order();
-            order.CreatedDate = DateTime.Now;
-            order.ShipAddress = shipAddress;
-            order.ShipEmail = shipEmail;
-            order.ShipMobile = shipMobile;
-            order.ShipName = shipName;
-            try
+            if(ModelState.IsValid)
             {
-                var id = new OrderDao().Insert(order);
-                var orderDetailDao = new OrderDetailDao();
-                var cart = (List<CartItem>)Session[CommonConstants.CART_SESSION];
-                foreach(var item in cart)
+                var order = new Order();
+                order.CreatedDate = DateTime.Now;
+                order.ShipAddress = model.ShipAddress;
+                order.ShipEmail = model.ShipEmail;
+                order.ShipMobile = model.ShipMobile;
+                order.ShipName = model.ShipName;
+                order.PaymentStatus = false;
+                try
                 {
-                    var detail = new OrderDetail();
-                    detail.OrderID = id;
-                    detail.ProductID = item.Product.ID;
-                    detail.Quantity = item.Quantity;
-                    orderDetailDao.Insert(detail);
+                    var id = new OrderDao().Insert(order);
+                    var orderDetailDao = new OrderDetailDao();
+                    var cart = (List<CartItem>)Session[CommonConstants.CART_SESSION];
+                    foreach(var item in cart)
+                    {
+                        var detail = new OrderDetail();
+                        detail.OrderID = id;
+                        detail.ProductID = item.Product.ID;
+                        detail.Quantity = item.Quantity;
+                        orderDetailDao.Insert(detail);
+                        new ProductDao().UpdateQuantity(item.Product.ID, item.Quantity);
+                    }
                 }
+                catch
+                {
+                    ModelState.AddModelError("", "Giao dịch không thành công");
+                }
+                //Xóa session sau khi mua thành công
+                Session[CommonConstants.CART_SESSION] = null;
+                return Redirect("/hoan-thanh");
+
             }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            //Xóa session sau khi mua thành công
-            Session[CommonConstants.CART_SESSION] = null;
-            return Redirect("/hoan-thanh");
+            var carts = Session[CommonConstants.CART_SESSION];
+            ViewBag.cartList = (List<CartItem>)carts;
+            return View("Payment");
+
         }
 
         public ActionResult Success()

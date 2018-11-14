@@ -82,6 +82,12 @@ namespace Model.Dao
             return res > 0;
         }
 
+        public bool AdminLogin(string userName, string password)
+        {
+            var res = dbContext.Users.Count(i => i.Username == userName && i.Password == password && i.RoleID == 1);
+            return res > 0;
+        }
+
         public bool Delete(int id)
         {
             try

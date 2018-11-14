@@ -47,6 +47,14 @@ namespace Dido_Store_2.Controllers
                     userSession.UserName = user.Username;
                     userSession.UserID = user.ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
+                    if(model.RememberMe)
+                    {
+                        HttpCookie rememberLogin = new HttpCookie("RememberLogin");
+                        rememberLogin["Username"] = user.Username;
+                        rememberLogin["Password"] = user.Password;
+                        rememberLogin.Expires = DateTime.Now.AddDays(30);
+                        Response.Cookies.Add(rememberLogin);
+                    }
                     return Redirect("/");
                 }
                 else

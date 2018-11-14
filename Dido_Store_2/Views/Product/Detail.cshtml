@@ -39,14 +39,30 @@
                     <h2 class="font-weight-bold">@Model.Name</h2>
                     <p>@Model.Description</p>
                     <div class="price">
-                        <p>Giá: <span>@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Liên hệ")    </span></p>
+                        @if(Model.PromotionPrice.HasValue)
+                        {
+                            <p>Giá: <span><small><strike>@(Model.Price.Value.ToString("N0"))</strike><u>đ</u></small>&nbsp;@Model.PromotionPrice.Value.ToString("N0")<u>đ</u>    </span></p>
+                        }
+                        else
+                        {
+                            <p>Giá: <span>@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Liên hệ")    </span></p>
+                        }
                     </div>
                     <div class="share-desc">
                         <div class="share">
                             <p>Chia sẻ :</p>
                             <div class="fb-share-button" data-href="/chi-tiet/@Model.Alias-@Model.ID" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                         </div>
-                        <div class="button"><span><a href="/them-gio-hang?productID=@Model.ID&quantity=1">Thêm vào giỏ</a></span></div>
+                        @if(Model.Quantity > 0)
+                        {
+                            <div class="button"><span><a href="/them-gio-hang?productID=@Model.ID&quantity=1">Thêm vào giỏ</a></span></div>
+
+                        }
+                        else
+                        {
+                            <div class="button"><span><a>Tạm hết hàng</a></span></div>
+
+                        }
                         <div class="clear"></div>
                     </div>
                     @*<div class="wish-list">
@@ -137,7 +153,14 @@
                         <a href="@url"><img src="@item.Image" alt=""></a>
                         <div class="price" style="border:none">
                             <div class="add-cart" style="float:none">
-                                <h4><a href="/them-gio-hang?productID=@item.ID&quantity=1">Add to Cart</a></h4>
+                                @if(item.Quantity > 0)
+                                {
+                                    <h4><a href="/them-gio-hang?productID=@item.ID&quantity=1">Thêm vào giỏ</a></h4>
+                                }
+                                else
+                                {
+                                    <h4><a>Tạm hết hàng</a></h4>
+                                }
                             </div>
                             <div class="clear"></div>
                         </div>

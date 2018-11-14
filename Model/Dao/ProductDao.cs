@@ -89,6 +89,27 @@ namespace Model.Dao
             return model.ToList();
         }
 
+        public bool UpdateQuantity(int id, int quantity)
+        {
+            try
+            {
+                Product entity = dbContext.Products.Find(id);
+                entity.Quantity -= quantity;
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public int GetQuantity(int id)
+        {
+            var entity = dbContext.Products.Find(id);
+            return entity.Quantity.GetValueOrDefault(0);
+        }
+
         public bool Update(Product product)
         {
             try

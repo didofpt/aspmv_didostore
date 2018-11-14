@@ -16,5 +16,9 @@ namespace Dido_Store_2.Models
         [Display(Name = "Mật khẩu")]
         [Required(ErrorMessage = "Bạn phải nhập mật khẩu")]
         public string Password { get; set; }
+
+
+        [Display(Name = "Lưu đăng nhập")]
+        public bool RememberMe { get; set; }
     }
 }

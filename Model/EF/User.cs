@@ -26,13 +26,14 @@
         public string Name { get; set; }
 
         [StringLength(128)]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Định dạng email không đúng")]
         public string Email { get; set; }
 
         [StringLength(256)]
         [DisplayName("Địa chỉ")]
         public string Address { get; set; }
 
-        [StringLength(16)]
+        [RegularExpression(@"\d{10}", ErrorMessage ="Định dạng số điện thoại không chính xác")]
         [DisplayName("SĐT")]
         [Required(ErrorMessage = "Bạn chưa nhập SĐT")]
         public string Phone { get; set; }

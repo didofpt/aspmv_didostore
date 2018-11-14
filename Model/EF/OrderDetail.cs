@@ -18,6 +18,8 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductID { get; set; }
 
+
+        
         public int? Quantity { get; set; }
 
         public virtual Order Order { get; set; }

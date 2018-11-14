@@ -18,7 +18,7 @@ namespace Dido_Store_2.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var res = dao.Login(model.UserName, model.Password);
+                var res = dao.AdminLogin(model.UserName, model.Password);
                 if(res)
                 {
 

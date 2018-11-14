@@ -1193,12 +1193,13 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\HeaderCart.cshtml" />
-    <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Cart\Payment - Copy.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
