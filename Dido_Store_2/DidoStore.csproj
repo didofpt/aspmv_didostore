@@ -1213,6 +1213,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{33dcf764-cecc-4b0a-ad52-e5867537ee1c}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{ee0e32ba-d5af-4030-af07-f628e7630d70}</Project>
       <Name>Model</Name>
